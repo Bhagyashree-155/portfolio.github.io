@@ -5,7 +5,7 @@
 I am passionate about technology and problem-solving. Here's a glimpse of my work:
 
 ## 🛠️ Projects
-- **Project 1**: KEY CONCEPTS / THINGS  THAT  I LEARNED IN THIS COURSE
+- **Project 1**: KEY CONCEPTS / THINGS  THAT I LEARNED IN THIS COURSE
 
 ## 🚀 Skills
 - C++
