@@ -1,6 +1,6 @@
 ## Portfolio
 
-### Hello, I'm [Your Name] 👋
+### Hello, I'm [BHAGYASHREE.ANAND.MUGALKHOD] 👋
 
 I am passionate about technology and problem-solving. Here's a glimpse of my work:
 
@@ -21,17 +21,17 @@ I am passionate about technology and problem-solving. Here's a glimpse of my wor
 
 <dl>
 <dt>Course Name</dt>
-<dd>Algorithmic Problem Solving</dd>
+<dd>DESIGN AND ANALYSIS ALGORITHMS</dd>
 <dt>Course Code</dt>
-<dd>Course Code Placeholder</dd>
+<dd>24ECAC203</dd>
 <dt>Name</dt>
-<dd>Your Name</dd>
+<dd>BHAGYASHREE.ANAND.MUGALKHOD</dd>
 <dt>SRN</dt>
-<dd>Your SRN</dd>
+<dd>01FE23BCI118</dd>
 <dt>Course Instructor</dt>
-<dd>Instructor Name Placeholder</dd>
+<dd>K.M.M.RAJESHEKHARAIAH</dd>
 <dt>University</dt>
-<dd>Your University Name</dd>
+<dd>KLE TECHNOLOGICAL UNIVERSITY ,HUBBALLI</dd>
 <dt>Portfolio Topic/Domain</dt>
 <dd>Google</dd>
 </dl>
