@@ -54,12 +54,15 @@
             border-radius: 5px;
             font-family: monospace;
             font-size: 1.1rem;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-x: auto;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Hello, I'm Sneha Sanjeevkumar Baragi 👋</h1>
+        <h1>Hello, I'm Bhagyashree Anand Mugalkhod 👋</h1>
         <p>I am passionate about technology and problem-solving. Here's a glimpse of my work:</p>
     </header>
 
@@ -120,42 +123,43 @@
     </section>
 
     <script>
-        function showReflections(type) {
-            const title = document.getElementById('reflection-title');
-            const content = document.getElementById('reflection-content');
-            const reflections = document.getElementById('reflections');
+       function showReflections(type) {
+    const title = document.getElementById('reflection-title');
+    const content = document.getElementById('reflection-content');
+    const reflections = document.getElementById('reflections');
 
-            if (type === 'lab') {
-                title.innerText = 'Lab Reflections';
-                content.innerHTML = `
-                    <h3>Key Concepts / Things Learned in This Course</h3>
-                    <h4>Time Complexity Analysis</h4>
-                    <h5>Task 1</h5>
-                    <p>Write a recursive C++ program for the Towers of Brahma problem and record the time taken for given input sizes. Use a spreadsheet application and plot a graph presenting your results.</p>
-                    <pre class="code"><code>#include &lt;iostream&gt;
+    if (type === 'lab') {
+        title.innerText = 'Lab Reflections';
+        content.innerHTML = `
+            <h3>Key Concepts / Things Learned in This Course</h3>
+            <h4>Time Complexity Analysis</h4>
+            <h5>Task 1</h5>
+            <p>Write a recursive C++ program for the Towers of Brahma problem and record the time taken for given input sizes. Use a spreadsheet application and plot a graph presenting your results.</p>
+            <pre class="code"><code>#include &lt;iostream&gt;
 #include &lt;ctime&gt;
 using namespace std;
 
+
 void towers(int n, string from, string to, string aux) {
     if (n == 1) {
-        cout &lt;&lt; "Move disc 1 from " &lt;&lt; from &lt;&lt; " to " &lt;&lt; to &lt;&lt; endl;
+        cout << "Move disc 1 from " << from << " to " << to << endl;
         return;
     }
     towers(n-1, from, aux, to);
-    cout &lt;&lt; "Move disc " &lt;&lt; n &lt;&lt; " from " &lt;&lt; from &lt;&lt; " to " &lt;&lt; to &lt;&lt; endl;
+    cout << "Move disc " << n << " from " << from << " to " << to << endl;
     towers(n-1, aux, to, from);
 }
 
 int main() {
     int n;
     string A = "A", B = "B", C = "C";
-    cin &gt;&gt; n;
+    cin >> n;
 
     clock_t start = clock();
     towers(n, A, C, B);
     clock_t end = clock();
     double elapsed = double(end - start) / CLOCKS_PER_SEC;
-    cout &lt;&lt; "Time taken for execution: " &lt;&lt; elapsed &lt;&lt; " seconds" &lt;&lt; endl;
+    cout << "Time taken for execution: " << elapsed << " seconds" << endl;
     return 0;
 }
 </code></pre>
@@ -1069,8 +1073,8 @@ return j
         
         <!-- Dijkstra's Algorithm -->
         <div class="algorithm">
-            <h3>Dijkstra’s Algorithm</h3>
-            <pre>
+            <h3>1.Dijkstra’s Algorithm</h3>
+<pre>
 Dijkstra(G, s) 
 // Dijkstra’s algorithm for single source shortest path 
 // Input: A weighted connected graph G(V, E) with non-negative weights and its vertex s 
@@ -1097,7 +1101,7 @@ for i <- 0 to |V| - 1 do
 
         <!-- Floyd's Algorithm -->
         <div class="algorithm">
-            <h3>Floyd’s Algorithm</h3>
+            <h3>2.Floyd’s Algorithm</h3>
             <pre>
 Floyd(W[1..n, 1..n]) 
 // Implements Floyd’s algorithm for all pair shortest path problem 
@@ -1112,18 +1116,107 @@ return D
             </pre>
         </div>
 
-        <!-- Other algorithms can be added similarly here -->
+        <!-- Warshall’s Algorithm -->
+        <h2>3. Warshall’s Algorithm</h2>
+        <div class="algorithm">
+            <h3>ALGORITHM Warshall (A[1..n,1..n])</h3>
+            <p>// Implements Warshall’s algorithm for computing transitive closure</p>
+            <p>// Input: The adjacency matrix A of a digraph with n vertices</p>
+            <p>// Output: The transitive closure of the digraph</p>
+            <pre>
+R(0) <- A
+for k <- 1 to n do
+    for i <- 1 to n do
+        for j <- 1 to n do
+            R(k)[i, j] <- R(k-1)[i, j] or (R(k-1)[i, k] and R(k-1)[k, j])
+return R(n)
+            </pre>
+        </div>
+
+        <!-- Kruskal’s Algorithm -->
+        <h2>4. Kruskal’s Algorithm</h2>
+        <div class="algorithm">
+            <h3>ALGORITHM Kruskal(G)</h3>
+            <p>// Kruskal’s algorithm to construct a minimum spanning tree</p>
+            <p>// Input: A weighted connected graph G(V, E)</p>
+            <p>// Output: ET, the set of edges composing of MST of G</p>
+            <pre>
+sort E in nondecreasing order of the edge weights w(ei1) <= … <= w(ei|E|)
+ET <- Ø
+ecounter <- 0
+k <- 0
+while ecounter < |V| - 1 do
+    k <- k + 1
+    if ET U {eik} is acyclic
+        ET <- ET U {eik}
+        ecounter <- ecounter + 1
+return ET
+            </pre>
+        </div>
+
+        <!-- Prim’s Algorithm -->
+        <h2>5. Prim’s Algorithm</h2>
+        <div class="algorithm">
+            <h3>ALGORITHM Prim(G)</h3>
+            <p>// Prim’s algorithm to construct a minimum spanning tree</p>
+            <p>// Input: A weighted connected graph G(V, E)</p>
+            <p>// Output: ET, the set of edges composing of MST of G</p>
+            <pre>
+VT <- {v0}
+ET <- Ø
+for i <- 1 to |V| - 1 do
+    find a minimum weight edge e* = (v*, u*) along all the edges (v, u) such that
+        v is in VT and u is in V - VT
+    VT <- VT U {u*}
+    ET <- ET U {e*}
+return ET
+            </pre>
+        </div>
+
+        <!-- Bellman-Ford Algorithm -->
+        <h2>6. Bellman-Ford Algorithm</h2>
+        <div class="algorithm">
+            <h3>Bellman-Ford Algorithm</h3>
+            <pre>
+d[s] ← 0
+for each v ∈ V − {s}
+    do d[v] ← ∞  // initialization
+
+for i ← 1 to |V| − 1
+    do for each edge (u, v) ∈ E
+        do if d[v] > d[u] + w(u, v)
+            then d[v] ← d[u] + w(u, v)  // relaxation step
+
+for each edge (u, v) ∈ E
+    do if d[v] > d[u] + w(u, v)
+        then report that a negative-weight cycle exists
+
+At the end, d[v] = δ(s, v), if no negative-weight cycles.
+            </pre>
+        </div>
+    </section>
+
+    <section class="challenge-section">
+        <h2>Challenges in Learning, Understanding Graph Algorithms</h2>
+        <p>Understanding graph algorithms poses challenges due to their complex structures and the need for a strong foundation in discrete mathematics and graph theory. The diverse range of algorithms, like Dijkstra's, Bellman-Ford, and Kruskal's, each come with unique applications and complexities. Additionally, analyzing their efficiency and translating theoretical concepts into real-world applications can be daunting. Handling edge cases, such as disconnected graphs or negative weights, further adds to the complexity.</p>
+    </section>
+
+    <section class="challenge-section">
+        <h2>Challenges in Correlating with Real-World Applications</h2>
+        <p>Correlating graph algorithms with real-world applications can be challenging due to the complexity and variability of real-world data, which often differs significantly from the clean, structured data used in academic examples. Additionally, real-world scenarios may involve dynamic and large-scale graphs, requiring efficient handling of data updates and optimizations that aren't as straightforward. Moreover, practical constraints such as computational resources, time limits, and data quality can further complicate the direct application of theoretical algorithms, necessitating customized solutions and adaptations.</p>
+    </section>
+
+    <section class="challenge-section">
+        <h2>Determining the Most Efficient Approach/Design Techniques</h2>
+        <p>Determining the most efficient approach for solving complex problems involving graph algorithms requires a systematic and iterative process. First, clearly define the problem and its constraints. Then, break the problem down into smaller, manageable parts and understand the underlying graph structure. Research and evaluate different algorithms, considering factors like time and space complexity, scalability, and ease of implementation. Use techniques such as divide and conquer, dynamic programming, or greedy algorithms based on the problem requirements. Prototype and test the chosen approach, analyze its performance, and iteratively refine it. Combining theoretical knowledge with practical experimentation ensures an efficient and effective solution.</p>
+    </section>
         
     </div>
 
 </body>
 </html>
 
-int main() {
-    // Towers of Brahma logic here
-}
-                    </code></pre>
-                `;
+                  
             } else if (type === 'theory') {
                 title.innerText = 'Theory Reflections';
                 content.innerHTML = `
