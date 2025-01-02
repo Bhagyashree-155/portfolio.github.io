@@ -230,3 +230,344 @@ int main() {
     </div>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAA Concepts and Examples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1, h2, h3, h4 {
+            color: #444;
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        pre {
+            background: #e8e8e8;
+            padding: 15px;
+            border-left: 4px solid #6c757d;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DAA Concepts and Examples</h1>
+
+        <h2>Length of String</h2>
+        <pre>
+#include &lt;stdio.h&gt;
+#include &lt;time.h&gt;
+
+// Function to calculate the length of the string recursively
+int getlength(char *str, int length) {
+    if(*str != '\0'){
+        length++;
+        str++;
+        return getlength(str, length);
+    }
+    return length;
+}
+
+int main() {
+    char str[100];
+    int length = 0;
+    printf("Enter a string: ");
+    scanf("%s", str);
+
+    // Start measuring time
+    clock_t start = clock();
+
+    // Calculate the length of the string
+    length = getlength(str, length);
+
+    // Stop measuring time
+    clock_t end = clock();
+    double elapsed = ((double)(end - start)) / CLOCKS_PER_SEC;
+
+    // Print the result
+    printf("The length is %d\n", length);
+    printf("Time taken for execution: %f seconds\n", elapsed);
+
+    return 0;
+}
+        </pre>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Length (n)</th>
+                    <th>Library</th>
+                    <th>Recursion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>100</td><td>3</td><td>3</td></tr>
+                <tr><td>500</td><td>3</td><td>3</td></tr>
+                <tr><td>1000</td><td>4</td><td>4</td></tr>
+                <tr><td>5000</td><td>4</td><td>4</td></tr>
+                <tr><td>10000</td><td>5</td><td>5</td></tr>
+                <tr><td>50000</td><td>5</td><td>5</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Challenges in Learning</h3>
+        <ul>
+            <li>Understanding time complexity of algorithms like Tower of Hanoi, linear and binary search, and string length calculations.</li>
+            <li>Strong mathematical foundations and abstract nature of theoretical concepts.</li>
+        </ul>
+
+        <h3>Challenges in Correlating with Real-World Applications</h3>
+        <ul>
+            <li>Adapting algorithms to handle real-world data and constraints.</li>
+            <li>Bridging the gap between abstract ideas and practical use.</li>
+        </ul>
+
+        <h3>Determining Efficient Approaches</h3>
+        <ul>
+            <li>Clearly define the problem and break it down into smaller parts.</li>
+            <li>Research existing solutions and iteratively test and refine the approach.</li>
+        </ul>
+
+        <h2>Binary Search Tree</h2>
+        <pre>
+#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+using namespace std;
+
+struct tree {
+    int data;
+    struct tree* left;
+    struct tree* right;
+};
+
+typedef struct tree TREE;
+
+class Binarysearchtree {
+public:
+    TREE* insert_into_bst(TREE*, int);
+    void inorder(TREE*);
+    void preorder(TREE*);
+    void postorder(TREE*);
+    TREE* delete_from_bst(TREE*, int);
+};
+
+TREE* Binarysearchtree::insert_into_bst(TREE* root, int data) {
+    TREE* newnode = (TREE*)malloc(sizeof(TREE));
+    if (newnode == NULL) {
+        cout &lt;&lt; "Memory allocation failed" &lt;&lt; endl;
+        return root;
+    }
+    newnode->data = data;
+    newnode->left = NULL;
+    newnode->right = NULL;
+    if (root == NULL) {
+        root = newnode;
+        cout &lt;&lt; "Root node inserted into tree" &lt;&lt; endl;
+        return root;
+    }
+    TREE* curnode = root;
+    TREE* parent = NULL;
+    while (curnode != NULL) {
+        parent = curnode;
+        if (newnode->data < curnode->data) {
+            curnode = curnode->left;
+        } else {
+            curnode = curnode->right;
+        }
+    }
+    if (newnode->data < parent->data) {
+        parent->left = newnode;
+    } else {
+        parent->right = newnode;
+    }
+    cout &lt;&lt; "Node inserted successfully into the tree" &lt;&lt; endl;
+    return root;
+}
+
+// Inorder Traversal
+void Binarysearchtree::inorder(TREE* root) {
+    if (root != NULL) {
+        inorder(root->left);
+        cout &lt;&lt; root->data &lt;&lt; "\t";
+        inorder(root->right);
+    }
+}
+
+// Preorder Traversal
+void Binarysearchtree::preorder(TREE* root) {
+    if (root != NULL) {
+        cout &lt;&lt; root->data &lt;&lt; "\t";
+        preorder(root->left);
+        preorder(root->right);
+    }
+}
+
+// Postorder Traversal
+void Binarysearchtree::postorder(TREE* root) {
+    if (root != NULL) {
+        postorder(root->left);
+        postorder(root->right);
+        cout &lt;&lt; root->data &lt;&lt; "\t";
+    }
+}
+
+// Delete Node
+TREE* Binarysearchtree::delete_from_bst(TREE* root, int data) {
+    TREE* curnode = root;
+    TREE* parent = NULL;
+    TREE* successor = NULL;
+    TREE* p = NULL;
+
+    if (root == NULL) {
+        cout &lt;&lt; "TREE is empty" &lt;&lt; endl;
+        return root;
+    }
+
+    while (curnode != NULL && curnode->data != data) {
+        parent = curnode;
+        if (data < curnode->data) {
+            curnode = curnode->left;
+        } else {
+            curnode = curnode->right;
+        }
+    }
+
+    if (curnode == NULL) {
+        cout &lt;&lt; "Item not found" &lt;&lt; endl;
+        return root;
+    }
+
+    if (curnode->left == NULL) {
+        p = curnode->right;
+    } else if (curnode->right == NULL) {
+        p = curnode->left;
+    } else {
+        successor = curnode->right;
+        while (successor->left != NULL) {
+            successor = successor->left;
+        }
+        successor->left = curnode->left;
+        p = curnode->right;
+    }
+    if (parent == NULL) {
+        free(curnode);
+        return p;
+    }
+
+    if (curnode == parent->left) {
+        parent->left = p;
+    } else {
+        parent->right = p;
+    }
+    free(curnode);
+    return root;
+}
+
+int main() {
+    Binarysearchtree bst;
+    TREE* root = NULL;
+    int choice = 0, data = 0;
+    while (1) {
+        cout &lt;&lt; "\n*MENU\n";
+        cout &lt;&lt; "1-Insert into BST\n";
+        cout &lt;&lt; "2-Inorder Traversal\n";
+        cout &lt;&lt; "3-Preorder Traversal\n";
+        cout &lt;&lt; "4-Postorder Traversal\n";
+        cout &lt;&lt; "5-Delete from BST\n";
+        cout &lt;&lt; "Any other option to exit\n";
+        cout &lt;&lt; "*\n";
+
+        cout &lt;&lt; "Enter your choice: ";
+        cin &gt;&gt; choice;
+        switch (choice) {
+            case 1:
+                cout &lt;&lt; "Enter the item to insert: ";
+                cin &gt;&gt; data;
+                root = bst.insert_into_bst(root, data);
+                break;
+            case 2:
+                if (root == NULL) {
+                    cout &lt;&lt; "Tree is empty\n";
+                } else {
+                    cout &lt;&lt; "Inorder traversal is..\n";
+                    bst.inorder(root);
+                }
+                break;
+            case 3:
+                if (root == NULL) {
+                    cout &lt;&lt; "Tree is empty\n";
+                } else {
+                    cout &lt;&lt; "Preorder traversal is..\n";
+                    bst.preorder(root);
+                }
+                break;
+            case 4:
+                if (root == NULL) {
+                    cout &lt;&lt; "Tree is empty\n";
+                } else {
+                    cout &lt;&lt; "Postorder traversal is..\n";
+                    bst.postorder(root);
+                }
+                break;
+            case 5:
+                cout &lt;&lt; "Enter the item to be deleted: ";
+                cin &gt;&gt; data;
+                root = bst.delete_from_bst(root, data);
+                break;
+            default:
+                cout &lt;&lt; "Exiting code:\n";
+                exit(0);
+        }
+    }
+    return 0;
+}
+        </pre>
+
+        <h3>Challenges in Learning</h3>
+        <ul>
+            <li>Understanding hierarchical structure and recursive operations in binary search trees.</li>
+            <li>Handling edge cases like duplicate keys or node deletions.</li>
+        </ul>
+
+        <h3>Challenges in Correlating with Real-World Applications</h3>
+        <ul>
+            <li>Identifying use cases and performance trade-offs in dynamic scenarios.</li>
+            <li>Maintaining balanced structures for efficiency.</li>
+        </ul>
+
+        <h3>Determining Efficient Approaches</h3>
+        <ul>
+            <li>Analyze problem requirements and compare with alternatives like hash tables or balanced trees.</li>
+            <li>Test with real-world data and evaluate complexity.</li>
+        </ul>
+    </div>
+</body>
+</html>
