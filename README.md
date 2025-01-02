@@ -1,3 +1,4 @@
+README1.md
 ## Portfolio
 
 ### Hello, I'm [BHAGYASHREE.ANAND.MUGALKHOD] 👋
@@ -5,11 +6,13 @@
 I am passionate about technology and problem-solving. Here's a glimpse of my work:
 
 ## 🛠️ Projects
-- **Project 1**: KEY CONCEPTS / THINGS  THAT I LEARNED IN THIS COURSE
+- **Project 1**: A short description of your project.
+- **Project 2**: A short description of another project.
 
 ## 🚀 Skills
-- C++
+- C++, Python, JavaScript
 - Data Structures and Algorithms
+- Web Development (React.js, Node.js)
 
 ## 🌐 Find Me Online
 - [GitHub](https://github.com/your-github-username)
@@ -33,7 +36,3 @@ I am passionate about technology and problem-solving. Here's a glimpse of my wor
 <dt>Portfolio Topic/Domain</dt>
 <dd>Google</dd>
 </dl>
-
-<br> 
-> “The only way to do great work is to love what you do.” – Steve Jobs
-># portfolio.github.io
