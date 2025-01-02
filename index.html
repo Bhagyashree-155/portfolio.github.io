@@ -571,3 +571,213 @@ int main() {
     </div>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAA Concepts and Examples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1, h2, h3, h4 {
+            color: #444;
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        pre {
+            background: #e8e8e8;
+            padding: 15px;
+            border-left: 4px solid #6c757d;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DAA Concepts and Examples</h1>
+
+        <h2>Depth-First Search (DFS) and Breadth-First Search (BFS)</h2>
+        <h3>DFS Code</h3>
+        <pre>
+#include &lt;iostream&gt;
+using namespace std;
+
+int v = 5;
+int m[10][10] = {{0,1,1,0,0}, {1,0,0,1,1},
+        {1,0,0,0,1}, {0,1,0,0,0}, {0,1,1,0,0}};
+int visited[10];
+
+void dfs(int m[10][10], int v, int source) {
+    visited[source] = 1;
+    for (int i = 0; i < v; i++) {
+        if (m[source][i] == 1 && visited[i] == 0) {
+            cout &lt;&lt; i &lt;&lt; "\t";
+            dfs(m, v, i);
+        }
+    }
+}
+int main() {
+    int source;
+    for (int i = 0; i < v; i++)
+        visited[i] = 0;
+
+    cout &lt;&lt; "Enter the source vertex: ";
+    cin &gt;&gt; source;
+
+    cout &lt;&lt; "The DFS Traversal is... \n";
+    cout &lt;&lt; source &lt;&lt; "\t";
+    dfs(m, v, source);
+
+    return 0;
+}
+        </pre>
+
+        <h3>BFS Code</h3>
+        <pre>
+#include &lt;iostream&gt;
+using namespace std;
+
+void bfs(int m[10][10], int v, int source) {
+    int queue[20];
+    int front = 0, rear = 0, u, i;
+    int visited[10];
+
+    for (i = 0; i < v; i++)
+        visited[i] = 0;
+
+    queue[rear] = source;
+    visited[source] = 1;
+
+    cout &lt;&lt; "The BFS Traversal is... \n";
+
+    while (front <= rear) {
+        u = queue[front];
+        cout &lt;&lt; u &lt;&lt; "\t";
+        front++;
+
+        for (i = 0; i < v; i++) {
+            if (m[u][i] == 1 && visited[i] == 0) {
+                visited[i] = 1;
+                rear++;
+                queue[rear] = i;
+            }
+        }
+    }
+}
+
+int main() {
+    int v = 5;
+    int m[10][10] = {{0,1,1,0,0}, {1,0,0,1,1},
+        {1,0,0,0,1}, {0,1,0,0,0}, {0,1,1,0,0}};
+
+    int source;
+    cout &lt;&lt; "Enter the source vertex: ";
+    cin &gt;&gt; source;
+
+    bfs(m, v, source);
+
+    return 0;
+}
+        </pre>
+
+        <h3>Challenges in Learning DFS and BFS</h3>
+        <ul>
+            <li>Difficulty understanding traversal mechanisms and implementation details.</li>
+            <li>Managing data structures like stacks (DFS) or queues (BFS).</li>
+            <li>Handling edge cases like cycles and disconnected graphs.</li>
+        </ul>
+
+        <h3>Challenges in Correlating DFS and BFS with Real-World Applications</h3>
+        <ul>
+            <li>Mapping abstract nodes and edges to real-world entities like cities or networks.</li>
+            <li>Choosing the appropriate graph representation for a given scenario.</li>
+        </ul>
+
+        <h2>Heap</h2>
+        <pre>
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+void Heapify(vector&lt;int&gt;& H, int i, int n) {
+    int v;
+    for (int i = n / 2; i >= 1; i--) {
+        v = H[i];
+        bool heap = false;
+
+        while (!heap && 2 * i <= n) {
+            int j = 2 * i;
+
+            if (j < n && H[j] < H[j + 1]) {
+                j = j + 1;
+            }
+            if (v >= H[j]) {
+                heap = true;
+            } else {
+                H[i] = H[j];
+                i = j;
+            }
+        }
+        H[i] = v;
+    }
+}
+
+int main() {
+    vector&lt;int&gt; H = {7, 6, 17, 11, 64, 29, 6, 12, 2};
+    for (int i = 1; i < H.size(); i++) {
+        cout &lt;&lt; H[i] &lt;&lt; " ";
+    }
+    cout &lt;&lt; "\n";
+    int n = H.size();
+    int i;
+    Heapify(H, i, n);
+    cout &lt;&lt; "After heapification\n";
+    for (int i = 1; i < H.size(); i++) {
+        cout &lt;&lt; H[i] &lt;&lt; " ";
+    }
+    cout &lt;&lt; endl;
+    return 0;
+}
+        </pre>
+
+        <h3>Challenges in Learning Heaps</h3>
+        <ul>
+            <li>Visualizing binary tree structure when implemented using arrays.</li>
+            <li>Understanding and maintaining the "heap property" during insertion and deletion.</li>
+        </ul>
+
+        <h3>Challenges in Correlating Heaps with Real-World Applications</h3>
+        <ul>
+            <li>Identifying scenarios where heaps are optimal, such as priority queues or shortest path algorithms.</li>
+            <li>Adapting heap implementations for large-scale systems or specific use cases.</li>
+        </ul>
+
+    </div>
+</body>
+</html>
