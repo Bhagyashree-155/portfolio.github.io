@@ -781,3 +781,182 @@ int main() {
     </div>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAA Concepts and Examples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1, h2, h3, h4 {
+            color: #444;
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        pre {
+            background: #e8e8e8;
+            padding: 15px;
+            border-left: 4px solid #6c757d;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>DAA Concepts and Examples</h1>
+
+        <h2>Sorting Algorithms</h2>
+        <h3>Bubble Sort</h3>
+        <pre>
+ALGORITHM BubbleSort(A[0..n-1])
+// Sorts a given array using bubble sort
+// Input: An array A[0..n-1] of orderable elements
+// Output: Array A[0..n-1] sorted in ascending order
+for i <- 0 to n - 2 do
+    for j <- 0 to n - 2 - i do
+        if A[j+1] < A[j]
+            swap A[j] and A[j+1]
+        </pre>
+
+        <h3>Selection Sort</h3>
+        <pre>
+ALGORITHM SelectionSort(A[0..n-1])
+// Sorts a given array using selection sort
+// Input: An array A[0..n-1] of orderable elements
+// Output: Array A[0..n-1] sorted in ascending order
+for i <- 0 to n - 2 do
+    min <- i
+    for j <- i + 1 to n - 1 do
+        if A[j] < A[min]
+            min <- j
+    swap A[i] and A[min]
+        </pre>
+
+        <h3>Insertion Sort</h3>
+        <pre>
+ALGORITHM InsertionSort(A[0..n-1])
+// Sorts a given array using insertion sort
+// Input: An array A[0..n-1] of orderable elements
+// Output: Array A[0..n-1] sorted in ascending order
+for i <- 1 to n - 1 do
+    v <- A[i]
+    j <- i - 1
+    while j >= 0 and A[j] > v do
+        A[j + 1] <- A[j]
+        j <- j - 1
+    A[j + 1] <- v
+        </pre>
+
+        <h3>Merge Sort</h3>
+        <pre>
+ALGORITHM MergeSort(A[0..n-1])
+// Sorts a given A[0..n-1] by recursive mergesort
+// Input: An array A[0..n-1] of orderable elements
+// Output: Array A[0..n-1] sorted in nondecreasing order
+if n > 1
+    copy A[0...|_n/2_| - 1] to B[0...|_n/2_| - 1]
+    copy A[|_n/2_|...n - 1] to C[0...|^n/2^| - 1]
+    MergeSort(B[0...|_n/2_| - 1])
+    MergeSort(C[0...|^n/2^| - 1])
+    Merge(B, C, A)
+
+ALGORITHM Merge(B[0...p-1], C[0...q-1], A[0...p+q-1])
+// Merges two sorted arrays into one sorted array
+// Input: Arrays B[0...p-1] and C[0...q-1] both sorted
+// Output: Sorted array A[0...p+q-1] of the elements of B and C
+i <- 0
+j <- 0
+k <- 0
+while i < p and j < q do
+    if B[i] <= C[j]
+        A[k] <- B[i]
+        i <- i + 1
+    else
+        A[k] <- C[j]
+        j <- j + 1
+    k <- k + 1
+if i = p
+    copy C[j...q - 1] to A[k...p + q - 1]
+else
+    copy B[i...p - 1] to A[k...p + q - 1]
+        </pre>
+
+        <h3>Quick Sort</h3>
+        <pre>
+ALGORITHM QuickSort(A[l...r])
+// Sorts a subarray by quicksort
+// Input: A subarray A[l...r] of A[0...n-1], defined by its left and right indices l and r
+// Output: Subarray A[l...r] sorted in nondecreasing order
+if l < r
+    s <- Partition(A[l...r])
+    QuickSort(A[l...s - 1])
+    QuickSort(A[s + 1...r])
+
+ALGORITHM Partition(A[l...r])
+// Partitions a subarray by using its first element as a pivot
+// Input: A subarray A[l...r] of A[0...n-1], defined by its left and right indices l and r (l < r)
+// Output: Subarray A[l...r], with split position returned as this functions value
+p <- A[l]
+i <- l
+j <- r + 1
+repeat
+    repeat i <- i + 1 until A[i] >= p
+    repeat j <- j - 1 until A[j] <= p
+    swap(A[i] and A[j])
+until i >= j
+swap (A[i], A[j])
+swap (A[l], A[j])
+return j
+        </pre>
+
+        <h3>Challenges in Learning Sorting Algorithms</h3>
+        <ul>
+            <li>Understanding the mechanisms of each algorithm.</li>
+            <li>Determining time and space complexities for different scenarios.</li>
+            <li>Implementing algorithms without errors and debugging code.</li>
+        </ul>
+
+        <h3>Challenges in Correlating with Real-World Applications</h3>
+        <ul>
+            <li>Handling messy and dynamic data sets effectively.</li>
+            <li>Choosing appropriate algorithms based on specific requirements like stability and memory constraints.</li>
+            <li>Integrating sorting efficiently into larger systems.</li>
+        </ul>
+
+        <h3>Design Techniques for Solving Complex Problems</h3>
+        <ul>
+            <li>Understand the problem thoroughly and break it into smaller parts.</li>
+            <li>Analyze different approaches and their trade-offs in terms of time and space complexity.</li>
+            <li>Choose the most suitable data structures and algorithms based on the constraints.</li>
+            <li>Refine solutions iteratively through testing and optimization.</li>
+        </ul>
+    </div>
+</body>
+</html>
