@@ -960,3 +960,149 @@ return j
     </div>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pattern Searching and Graph Algorithms</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1, h2 {
+            color: #2C3E50;
+        }
+        h3 {
+            color: #2980B9;
+        }
+        .content {
+            margin-bottom: 20px;
+        }
+        .section {
+            margin-top: 20px;
+        }
+        .algorithm {
+            background-color: #ECF0F1;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        pre {
+            background-color: #2C3E50;
+            color: #ECF0F1;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Pattern Searching and Graph Algorithms</h1>
+
+    <!-- Pattern Searching Section -->
+    <div class="section">
+        <h2>Pattern Searching Algorithms</h2>
+
+        <div class="content">
+            <h3>1) What are the challenges in learning, understanding pattern searching methods like Rabin-Karp, Boyer-Moore, Brute Force string match, KMP?</h3>
+            <p>Learning pattern searching algorithms like brute-force, KMP, Boyer-Moore, and Rabin-Karp presents several challenges. These include grasping the core logic of each algorithm, understanding the pre-processing steps involved in KMP and Boyer-Moore (like building prefix tables or bad character tables), and analyzing their time and space complexities. Implementing these algorithms correctly, especially handling edge cases and boundary conditions, can also be tricky. Furthermore, understanding the trade-offs between these algorithms and choosing the most suitable one for a given scenario requires careful consideration of factors like pattern and text length, and frequency of searches.</p>
+            <p><strong>In short, the challenges are:</strong> understanding each algorithm's logic, mastering pre-processing steps (KMP, Boyer-Moore), analyzing performance, correct implementation (especially edge cases), and choosing the right algorithm for a specific use case.</p>
+        </div>
+
+        <div class="content">
+            <h3>2) What are the challenges in correlating with real-world applications?</h3>
+            <p>Applying pattern searching algorithms like Rabin-Karp, Boyer-Moore, brute-force, and KMP to real-world scenarios presents several challenges. These include handling the sheer scale and diverse nature of real-world data, which can be massive and contain various data types. Real-world patterns themselves can be complex, involving variable lengths, wildcards, approximate matches, or the need to search for multiple patterns simultaneously. Meeting stringent performance requirements, especially in applications like search engines or network security, is crucial. The preprocessing overhead of algorithms like KMP and Boyer-Moore, while improving search speed, must be considered, especially for infrequent searches. Memory usage can also be a constraint, particularly in resource-limited environments. Finally, integrating these algorithms with existing systems adds further complexity.</p>
+            <p><strong>In short, the challenges are:</strong> large and diverse data, complex patterns, performance needs, preprocessing cost, memory limits, and system integration.</p>
+        </div>
+
+        <div class="content">
+            <h3>3) How do you determine the most efficient approach/design techniques when solving complex problems?</h3>
+            <p>To determine the most efficient approach for pattern searching with algorithms like Rabin-Karp, Boyer-Moore, brute-force, and KMP, consider these factors:</p>
+            <ul>
+                <li><strong>Pattern and text length:</strong> For short patterns and texts, brute-force might be sufficient. For longer ones, KMP, Boyer-Moore, or Rabin-Karp are more efficient.</li>
+                <li><strong>Frequency of searches:</strong> If you're searching for the same pattern many times in different texts, the preprocessing overhead of KMP or Boyer-Moore becomes worthwhile.</li>
+                <li><strong>Alphabet size:</strong> Boyer-Moore performs well with larger alphabets.</li>
+                <li><strong>Expected matches:</strong> If matches are rare, Boyer-Moore tends to be very fast.</li>
+                <li><strong>Memory constraints:</strong> Brute-force uses minimal memory, while KMP requires some extra space for the prefix table.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Graph Algorithms Section -->
+    <div class="section">
+        <h2>Graph Algorithms</h2>
+
+        <div class="content">
+            <h3>1) What are the challenges in learning, understanding graph algorithms concepts?</h3>
+            <p>Understanding graph algorithms poses challenges due to their complex structures and the need for a strong foundation in discrete mathematics and graph theory. The diverse range of algorithms, like Dijkstra's, Bellman-Ford, and Kruskal's, each come with unique applications and complexities. Additionally, analyzing their efficiency and translating theoretical concepts into real-world applications can be daunting. Handling edge cases, such as disconnected graphs or negative weights, further adds to the complexity.</p>
+        </div>
+
+        <div class="content">
+            <h3>2) What are the challenges in correlating with real-world applications?</h3>
+            <p>Correlating graph algorithms with real-world applications can be challenging due to the complexity and variability of real-world data, which often differs significantly from the clean, structured data used in academic examples. Additionally, real-world scenarios may involve dynamic and large-scale graphs, requiring efficient handling of data updates and optimizations that aren't as straightforward. Moreover, practical constraints such as computational resources, time limits, and data quality can further complicate the direct application of theoretical algorithms, necessitating customized solutions and adaptations.</p>
+        </div>
+
+        <div class="content">
+            <h3>3) How do you determine the most efficient approach/design techniques when solving complex problems?</h3>
+            <p>Determining the most efficient approach for solving complex problems involving graph algorithms requires a systematic and iterative process. First, clearly define the problem and its constraints. Then, break the problem down into smaller, manageable parts and understand the underlying graph structure. Research and evaluate different algorithms, considering factors like time and space complexity, scalability, and ease of implementation. Use techniques such as divide and conquer, dynamic programming, or greedy algorithms based on the problem requirements. Prototype and test the chosen approach, analyze its performance, and iteratively refine it. Combining theoretical knowledge with practical experimentation ensures an efficient and effective solution.</p>
+        </div>
+    </div>
+
+    <!-- Algorithm Sections -->
+    <div class="section">
+        <h2>Graph Algorithm Implementations</h2>
+        
+        <!-- Dijkstra's Algorithm -->
+        <div class="algorithm">
+            <h3>Dijkstra’s Algorithm</h3>
+            <pre>
+Dijkstra(G, s) 
+// Dijkstra’s algorithm for single source shortest path 
+// Input: A weighted connected graph G(V, E) with non-negative weights and its vertex s 
+// Output: the length dv of a shortest path from s to v and its penultimate vertex pv for 
+// every vertex v in V 
+Initialize(Q) // Initialize vertex priority queue to empty 
+for every vertex v in V do 
+    dv <- ∞ 
+    pv <- null 
+    Insert(Q, v, dv) // Initialize vertex priority in priority queue 
+ds <- 0 
+Decrease(Q, s, ds) // Update priority of s with ds 
+VT <- Ø 
+for i <- 0 to |V| - 1 do 
+    u* <- DeleteMin(Q) 
+    VT = VT U {u*} 
+    for every vertex u in V – VT that is adjacent to u* do 
+        if du* + w(u*, u) < du 
+            du <- du* + w(u*, u) 
+            pu <- u* 
+            Decrease(Q, u, du)
+            </pre>
+        </div>
+
+        <!-- Floyd's Algorithm -->
+        <div class="algorithm">
+            <h3>Floyd’s Algorithm</h3>
+            <pre>
+Floyd(W[1..n, 1..n]) 
+// Implements Floyd’s algorithm for all pair shortest path problem 
+// Input: The weight matrix W of the graph with no negative length cycle 
+// Output: The distance matrix of the shortest path’s lengths 
+D <- W 
+for k <- 1 to n do 
+    for i <- 1 to n do 
+        for j <- 1 to n do 
+            D[i, j] <- min {D[i, j], D[i, k] + D[k, j]} 
+return D
+            </pre>
+        </div>
+
+        <!-- Other algorithms can be added similarly here -->
+        
+    </div>
+
+</body>
+</html>
