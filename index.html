@@ -56,71 +56,141 @@
             <dd>City Design</dd>
         </dl>
 
-        <blockquote>“The only way to do great work is to love what you do.” – Steve Jobs</blockquote>
-    </section>
-</body>
-</html>
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio for DAA Lab</title>
+    <title>DAA Learning Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+        /* Custom Button Styling */
+        button {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #fff;
+            background-color: #ff9800;
+            border: none;
+            padding: 12px 24px;
+            margin: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
-        h1, h2, h3, h4 {
-            color: #444;
+
+        button:hover {
+            background-color: #e68900;
+            transform: scale(1.05);
         }
-        .container {
-            width: 90%;
-            margin: auto;
-            overflow: hidden;
-            padding: 20px;
+
+        button:active {
+            background-color: #d97700;
+            transform: scale(1);
         }
-        .code {
-            background: #e8e8e8;
-            padding: 15px;
-            margin: 10px 0;
-            border-left: 4px solid #6c757d;
-            overflow-x: auto;
+
+        /* Reflections Content */
+        #reflections {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
+
+        #reflections h2 {
+            color: #4CAF50;
         }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 10px;
+
+        #reflections p {
             text-align: left;
+            line-height: 1.6;
         }
-        th {
+
+        .code {
             background-color: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 1.1rem;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-       >
+    <header>
+        <h1>Hello, I'm Sneha Sanjeevkumar Baragi 👋</h1>
+        <p>I am passionate about technology and problem-solving. Here's a glimpse of my work:</p>
+    </header>
 
-        <hr>
+    <section>
+        <h2>🛠 Projects</h2>
+        <ul>
+            <li><strong>Project 1</strong>: City Design - A Layout of Smart City</li>
+            <li><strong>Project 2</strong>: Implementing Real-World Traffic Monitoring and Management</li>
+        </ul>
 
-        <section>
-            <h2>Key Concepts / Things Learned in This Course</h2>
+        <h2>🚀 Skills</h2>
+        <ul>
+            <li>C++, Python, C Programming</li>
+            <li>Data Structures and Algorithms</li>
+        </ul>
 
-            <h3>Time Complexity Analysis</h3>
-            <h4>Task 1</h4>
-            <p>Write a recursive C++ program for the Towers of Brahma problem and record the time taken for given input sizes. Use a spreadsheet application and plot a graph presenting your results.</p>
-            <pre class="code"><code>#include &lt;iostream&gt;
+        <h2>🌐 Find Me Online</h2>
+        <ul>
+            <li><a href="https://github.com/your-github-username" target="_blank">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/sneha-baragi-8212172aa" target="_blank">LinkedIn</a></li>
+        </ul>
+
+        <h2>Portfolio Topic</h2>
+        <dl>
+            <dt>Course Name</dt>
+            <dd>Design and Analysis of Algorithms</dd>
+
+            <dt>Course Code</dt>
+            <dd>24ECAC203</dd>
+
+            <dt>Name</dt>
+            <dd>Sneha Sanjeevkumar Baragi</dd>
+
+            <dt>SRN</dt>
+            <dd>01FE23BCI054</dd>
+
+            <dt>Course Instructor</dt>
+            <dd>K M M Rajashekharaiah</dd>
+
+            <dt>University</dt>
+            <dd>KLE Technological University Hubballi</dd>
+
+            <dt>Portfolio Topic/Domain</dt>
+            <dd>Learning Portfolio</dd>
+        </dl>
+
+        <blockquote>“Hard work beats talent when talent doesn't work hard.” – Tim Notke</blockquote>
+
+        <div>
+            <button onclick="showReflections('lab')">Lab Reflections</button>
+            <button onclick="showReflections('theory')">Theory Reflections</button>
+        </div>
+
+        <div id="reflections" style="display:none; margin-top: 20px;">
+            <h2 id="reflection-title"></h2>
+            <p id="reflection-content"></p>
+        </div>
+    </section>
+
+    <script>
+        function showReflections(type) {
+            const title = document.getElementById('reflection-title');
+            const content = document.getElementById('reflection-content');
+            const reflections = document.getElementById('reflections');
+
+            if (type === 'lab') {
+                title.innerText = 'Lab Reflections';
+                content.innerHTML = `
+                    <h3>Key Concepts / Things Learned in This Course</h3>
+                    <h4>Time Complexity Analysis</h4>
+                    <h5>Task 1</h5>
+                    <p>Write a recursive C++ program for the Towers of Brahma problem and record the time taken for given input sizes. Use a spreadsheet application and plot a graph presenting your results.</p>
+                    <pre class="code"><code>#include &lt;iostream&gt;
 #include &lt;ctime&gt;
 using namespace std;
 
@@ -881,9 +951,9 @@ ALGORITHM MergeSort(A[0..n-1])
 // Input: An array A[0..n-1] of orderable elements
 // Output: Array A[0..n-1] sorted in nondecreasing order
 if n > 1
-    copy A[0...|_n/2_| - 1] to B[0...|_n/2_| - 1]
-    copy A[|_n/2_|...n - 1] to C[0...|^n/2^| - 1]
-    MergeSort(B[0...|_n/2_| - 1])
+    copy A[0...|n/2| - 1] to B[0...|n/2| - 1]
+    copy A[|n/2|...n - 1] to C[0...|^n/2^| - 1]
+    MergeSort(B[0...|n/2| - 1])
     MergeSort(C[0...|^n/2^| - 1])
     Merge(B, C, A)
 
@@ -1104,5 +1174,45 @@ return D
         
     </div>
 
+</body>
+</html>
+
+int main() {
+    // Towers of Brahma logic here
+}
+                    </code></pre>
+                `;
+            } else if (type === 'theory') {
+                title.innerText = 'Theory Reflections';
+                content.innerHTML = `
+                    <h3>Course Overview</h3>
+                    <p>This course dives deeply into the world of data structures and algorithms, emphasizing their creation, evaluation, and real-world applications in computational and engineering tasks. It integrates principles of mathematics, engineering, and advanced computer science techniques to equip students with the skills needed to analyze and solve a variety of computational problems.</p>
+
+                    <h3>What is the Course About?</h3>
+                    <p>The curriculum focuses on understanding the fundamental philosophies behind designing efficient algorithms and data structures. Topics include performance analysis methods, computational complexity, and strategies such as recursion, iteration, and backtracking. The course covers a wide array of data structures such as trees, graphs, heaps, and tries, as well as advanced algorithms for sorting, searching, shortest paths, and more.</p>
+
+                    <h3>What Data Structures and Algorithms Did You Study?</h3>
+                    <ul>
+                        <li>Linear Data Structures: Arrays, linked lists, stacks, and queues.</li>
+                        <li>Tree Structures: Binary search trees, AVL trees, red-black trees, heaps, and tries.</li>
+                        <li>Graph Representations: Adjacency lists and matrices, along with traversal methods like DFS and BFS.</li>
+                        <li>Specialized Structures: Segment trees, Fenwick trees, sparse tables, and skip lists.</li>
+                    </ul>
+
+                    <h3>How Does the Course Connect to Real-World Applications?</h3>
+                    <ul>
+                        <li>Web Applications: Database optimization through efficient searching and sorting.</li>
+                        <li>Game Development: Managing dynamic events with tree-based structures.</li>
+                        <li>Networking: Graph-based algorithms in routing protocols.</li>
+                        <li>Data Analytics: Efficient range queries using segment or Fenwick trees.</li>
+                        <li>Cybersecurity: Pattern searching in intrusion detection systems.</li>
+                        <li>Machine Learning: Priority-based tasks using heaps.</li>
+                    </ul>
+                `;
+            }
+
+            reflections.style.display = 'block';
+        }
+    </script>
 </body>
 </html>
